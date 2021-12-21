@@ -1,8 +1,9 @@
-import reguserReducer from 'reguserReducer'
-import { combineReducer } from 'redux'
+import { combineReducers } from 'redux'
+import empReducer from './empReducer'
+
 
 //rooreducer store in store.js
-const rootReducer = combineReducer({
-    reguserReducer
+const rootReducer = combineReducers({
+    empReducer
 })
  export default rootReducer

@@ -1,96 +1,85 @@
-import React, {useState} from 'react'
-import {useFormik} from 'formik'
+import React from 'react'
+import { useFormik } from 'formik'
+import { useDispatch } from 'react-redux'
+import { addEmp } from '../src/actions/action'
+import { NavLink } from 'react-router-dom'
+
 
 const EmpForm = () => {
-    // const [inputData, setinputData] = useState()
+    const dispatch = useDispatch();
     const formik = useFormik({
-        initialvalue: {
+        initialValues: {
+            id: new Date().getTime().toString(),
             name: "",
             phone: "",
             profession: "",
             salary: "",
-            email: "",
-            psw: "",
-            cpsw: ""
+            email: "",                                    
+            password: "",
+            confirmpassword: "",
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values))
-        },
-    });
+        // onSubmit: (values) => {
+        //     alert(JSON.stringify(values, null, 2));
+        //     console.log("values", values)
+        // }
+        onSubmit: (values) => dispatch(addEmp(values), formik.handleReset(),console.log("values", values)) 
+
+    })
     return (
-        <>  <h1>Employee Form</h1>
-            <form onSubmit={formik.handleSubmit}>
-                <div className='container'>
-                    
+        <>
+            <div>
+                <form onSubmit={formik.handleSubmit}>
+                    <h1>Employee form</h1>
                     <input type="text"
-                        id='name'
-                        name='name'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.name}
+                        name="name"
                         placeholder='Enter Employee Name'
-                        autocomplete="off" /><br /><br />
-                    
-                    
-                    <input type="number"
-                        id='phone'
-                        name='phone'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.phone}
-                        placeholder='Enter Phone Number'
-                        autocomplete="off" /><br /><br />
-                    
-                    
-                    <input type="text"
-                        id='profession'
+                        onChange={formik.handleChange}
+                        value={formik.values.name}
+                    />
+                    <input type="number" 
+                        name="phone"
+                        placeholder='Enter phone'
+                        onChange={formik.handleChange}
+                        value={formik.values.phone}
+                    />
+                    <input type="text" 
                         name='profession'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.profession}
-                        placeholder='Enter Proffesion'
-                        autocomplete="off" /><br /><br />
-                    
-                    
-                    <input type="number"
-                        id='salary'
+                        placeholder='Enter Profession'
+                        onChange={formik.handleChange}
+                        value={formik.values.profession}
+                    />
+                    <input type="number" 
                         name='salary'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.salary}
-                        placeholder='Enter Salary'
-                        autocomplete="off" /><br /><br />
-                    
-                    
-                    <input type="email"
-                        id='email'
+                        placeholder='Enter salary'
+                        onChange={formik.handleChange}
+                        value={formik.values.salary}
+                    />
+                    <input type="text" 
                         name='email'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.email}
                         placeholder='Enter Email'
-                        autocomplete="off" /><br /><br />  
-                    
-                    
-                    <input type="password"
-                        id='psw'
-                        name='psw'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.psw}
-                        placeholder='Enter Password'
-                        autocomplete="off" /><br /><br />  
-                    
-                    
-                    <input type="password"
-                        id='cpsw'
-                        name='cpsw'
-                        // onChange={formik.handleChange}
-                        // value={formik.values.cpsw}
-                        placeholder='Enter Confirm Password'
-                        autocomplete="off" /><br /><br />  
-                    
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                    />
+                    <input type="password" 
+                        name='password'
+                        placeholder='enter password'
+                        onChange={formik.handleChange}
+                        value={formik.values.password}
+                    />
+                    <input type="password" 
+                        name='confirmpassword'
+                        placeholder='enter confirm password'
+                        onChange={formik.handleChange}
+                        value={formik.values.confirmpassword}
+                    />
+
                     <button className='signin' type='submit'>Submit</button>&nbsp;&nbsp;
                     <button className='cancel' type='reset'>Cancel</button>
-                </div>
-            </form>
+                </form>
+                <NavLink to="/dashbord"><button className='dsb'>Dashbord</button></NavLink>
+            </div>
         </>
     )
 }
 
 export default EmpForm
-

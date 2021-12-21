@@ -1,9 +1,15 @@
 import React from 'react'
-import EmpForm from "./EmpForm"
+import {Route, Switch } from 'react-router-dom'
+import Dashbord from '../src/Dashbord'
+import EmpForm from '../src/EmpForm'
+
 const App = () => {
   return (
     <>
-      <EmpForm/>
+        <Switch>          
+            <Route exact path="/"><EmpForm /></Route>
+            <Route path="/dashbord"><Dashbord/></Route>          
+        </Switch>
     </>
   )
 }
