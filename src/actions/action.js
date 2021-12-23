@@ -1,4 +1,4 @@
-import { ADD_EMP, DELETE_EMP, EDIT_EMP, SEARCH_FILTER, UPDATE_EMP } from "./type"
+import { ADD_EMP, DELETE_EMP, EDIT_EMP, SEARCH_FILTER, UPDATE_EMP} from "./type"
 
 export const addEmp = (data) => {
     return {
@@ -9,20 +9,18 @@ export const addEmp = (data) => {
         }
 }
 
-export const editEmp = (index, id,data) => {
+export const editEmp = (id) => {
     return {
         type: EDIT_EMP,
-        payload : {index,
-        id,
-        data}
-    }
+        id
+        }
 }
 
-export const updateEdit = (index, data) => {
+export const updateEmp = (id, data) => {
     return {
-        type: UPDATE_EMP,
-        index,
-        data
+        type: UPDATE_EMP,         
+            id,
+            data        
     }
 }
 

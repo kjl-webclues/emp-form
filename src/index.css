@@ -78,11 +78,10 @@ box-sizing: content-box;
   cursor: pointer;
   opacity: 0.9;
 }
-.search{
+input.search{
   margin-left: 40%;
   font-size:medium;
-  
-  
+  border-radius: 10px;
 }
 
 .home{
